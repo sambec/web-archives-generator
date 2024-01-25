@@ -1,23 +1,30 @@
+from pytube.contrib.playlist import Playlist
 from pytube import YouTube
 
+#this one is for Play New World- Forged in Aeternum 
+#  pl = Playlist(url='https://youtube.com/playlist?list=PLZK0wLfINcocJCorOYFzRgxC0RcBnOS1S&si=RuLI2iq9tY5SEkFl')
+# folder = "Forged in Aeternum"
 
-# YouTube('https://www.youtube.com/watch?v=7avPoMhQxX8&list=PLj7RUk5mYgYpZb-dDuTmlFGYJ72Gjgrdv&index=143&ab_channel=blewoo').streams.first().download()
-yt = YouTube('https://youtu.be/09jkJlwdRd8?si=BFlTsOo5ruD1KmdY')
-print(yt)
-# print("Initialdata :", yt.initial_data)
-print("Metadata: ", yt.publish_date)
-print("Author:", yt.author)
-print("Title: ",yt.title)
-# for each mp4 file need to put these info
-# yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
+# this one is for Play New World - Dev updates
+# pl = Playlist(url='https://youtube.com/playlist?list=PLZK0wLfINcoehm-WNRKpyd86_EV_Mh4v-&si=69Laj9khXkyAnD51')
+# folder = "Dev Updates"
 
-list = ['https://youtu.be/09jkJlwdRd8?si=Sw6emIE1zNMyaYj2','https://youtu.be/BgKlvthYvXY?si=y1O6EA49BUPVavxk']
-for i in list:
-    print(i)
-    yt = YouTube(i)
-    title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10)
+# this one is for Dashup 
+pl = Playlist(url='https://youtube.com/playlist?list=PLav6EACPY8gU6Wnag9rlIoE-_Iraefoc8&si=2YpH5loxTTsbXgJw')
+folder = "Dashup"
+
+urls = list(pl.url_generator())
+count = 0
+for url in urls:
+    if count > 10:
+        break
+    print(url)
+    yt = YouTube(url)
+    title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10).replace("!","").replace("?","")
     date = str(yt.publish_date.date())
-    filename = f"{title}_{date}.mp4"
+    author = yt.author
+    filename = f"{folder}/{author}_{title}_{date}.mp4"
     yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(filename=filename)
     # yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(filename="New WorldForged in AeternumPlayStyles2022112")
-   
+    count += 1
+ 
