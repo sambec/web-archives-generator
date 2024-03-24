@@ -10,14 +10,21 @@ from pytube import YouTube
 # folder = "Dev Updates"
 
 # this one is for Dashup 
+# pl = Playlist(url='https://youtube.com/playlist?list=PLav6EACPY8gU6Wnag9rlIoE-_Iraefoc8&si=2YpH5loxTTsbXgJw')
+# folder = "Dashup"
+
+# this one is for Dashup 
+# pl = Playlist(url='https://youtube.com/playlist?list=PLav6EACPY8gU6Wnag9rlIoE-_Iraefoc8&si=2YpH5loxTTsbXgJw')
+# folder = "Dashup"
+
 pl = Playlist(url='https://youtube.com/playlist?list=PLav6EACPY8gU6Wnag9rlIoE-_Iraefoc8&si=2YpH5loxTTsbXgJw')
-folder = "Dashup"
+folder = "Mixtape"
 
 urls = list(pl.url_generator())
-count = 0
+# count = 0
 for url in urls:
-    if count > 10:
-        break
+    # if count > 10:
+    #     break
     print(url)
     yt = YouTube(url)
     title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10).replace("!","").replace("?","")
@@ -26,5 +33,5 @@ for url in urls:
     filename = f"{folder}/{author}_{title}_{date}.mp4"
     yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(filename=filename)
     # yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(filename="New WorldForged in AeternumPlayStyles2022112")
-    count += 1
+    # count += 1
  
