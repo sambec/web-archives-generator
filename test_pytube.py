@@ -13,10 +13,6 @@ from pytube import YouTube
 # pl = Playlist(url='https://youtube.com/playlist?list=PLav6EACPY8gU6Wnag9rlIoE-_Iraefoc8&si=2YpH5loxTTsbXgJw')
 # folder = "Dashup"
 
-# this one is for Dashup 
-# pl = Playlist(url='https://youtube.com/playlist?list=PLav6EACPY8gU6Wnag9rlIoE-_Iraefoc8&si=2YpH5loxTTsbXgJw')
-# folder = "Dashup"
-
 pl = Playlist(url='https://youtube.com/playlist?list=PLj7RUk5mYgYrT0soglXJqq0HujQimKB5K&si=N9vjxplRLgWUddKw')
 folder = "Mixtape"
 
@@ -27,10 +23,12 @@ for url in urls:
     #     break
     print(url)
     yt = YouTube(url)
-    title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10).replace("!","").replace("?","")
+    title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10).replace("!","").replace("?","").replace("|","")
     date = str(yt.publish_date.date())
     author = yt.author
-    filename = f"{folder}/{author}_{title}_{date}.mp4"
+    filename = f"{folder}/{title}.mp4"
+# filename = f"{folder}/{author}_{title}_{date}.mp4"
+    print(filename)
     yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(filename=filename)
     # yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(filename="New WorldForged in AeternumPlayStyles2022112")
     # count += 1

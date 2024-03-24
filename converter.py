@@ -1,7 +1,7 @@
 from moviepy.editor import *
 
 # Load the mp4 file
-video = VideoFileClip("example.mp4")
+video = VideoFileClip("Mixtape/Z_light_academia_playlist.mp4")
 
 # Extract audio from video
-video.audio.write_audiofile("example.mp3")
+video.audio.write_audiofile("Musique/A_light_academia_playlist.mp3")
