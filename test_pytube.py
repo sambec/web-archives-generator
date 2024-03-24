@@ -20,7 +20,7 @@ from pytube import YouTube
 pl = Playlist(url='https://youtube.com/playlist?list=PLj7RUk5mYgYrT0soglXJqq0HujQimKB5K&si=N9vjxplRLgWUddKw')
 folder = "Mixtape"
 
-# urls = list(pl.url_generator())
+urls = list(pl.url_generator())
 # count = 0
 for url in urls:
     # if count > 10:
