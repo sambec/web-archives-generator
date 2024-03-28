@@ -23,7 +23,7 @@ for url in urls:
     #     break
     print(url)
     yt = YouTube(url)
-    title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10).replace("!","").replace("?","").replace("|","")
+    title = yt.title.replace(":","_",10).replace(";","_",10).replace(" ","_",10).replace("!","").replace("?","").replace("|","").replace("/","")
     date = str(yt.publish_date.date())
     author = yt.author
     filename = f"{folder}/{title}.mp4"
