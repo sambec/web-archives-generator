@@ -15,7 +15,7 @@ Dans le cadre de l'archivage de la jouabilité, il faut aux archivistes et au hi
 - Génération de rapports exploitables (fichiers CSV)
 - Chaîne complète, reproductible, documentée dans un notebook Jupyter
 
-![Schéma pipeline](figures/process_pipeline.png)
+![Schéma pipeline](figures/schema_process.png)
 
 ##  Outils utilisés
 
